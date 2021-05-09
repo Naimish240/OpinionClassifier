@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="src/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="src/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="src/css/style.css">
+
+    <title>Opinion Classifier</title>
+  </head>
+  <body>
+  
+
+  <div class="content">
+    
+    <div class="container">
+
+      
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          
+          <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+
+              <h2 class="mb-5">Enter your sentence below</h2>
+
+              <form class="border-right pr-5 mb-5" method="post" id="contactForm" name="contactForm">
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <textarea class="form-control" name="message" id="message" cols="30" rows="7" placeholder="Write your sentence"></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <button class="btn btn-primary rounded-0 py-2 px-4" id='submit-button' onclick="APICall()">Submit</button>
+                    <span class="submitting"></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-4 ml-auto">
+              <h3 class="mb-4">What does this site do?</h3>
+              <p>Using ML techniques, this website tries to predict if the sentence you give contains an opinion or not.</p>
+              <p><a href="https://github.com/Naimish240/OpinionClassifier" target="_blank">Read more</a></p>
+            </div>
+          </div>
+        </div>  
+        </div>
+      </div>
+  </div>
+    
+    <script type="text/javascript">
+        
+        function displayBase64Image(placeholder, base64Image) {
+            var image = document.createElement('img');
+            image.onload = function() {
+                placeholder.innerHTML = '';
+                placeholder.appendChild(this);
+            }
+            image.src = base64Image;
+        }
+        function APICall(){
+            msg = document.getElementById('message').value;
+            const Data = {
+                txt: msg
+            };
+            console.log(Data);
+            const Params = {
+                
+                body:Data,
+                method:"POST"
+            }
+            console.log(Params);
+            //fetch('http://127.0.0.1:5000/api/processRequest', Params)
+            //.then(response => {
+            //    return response.json();
+            //})
+            //.then(data => {
+                //console.log(data)
+        }
+
+        fetch('http://127.0.0.1:5000/api/processRequest', {'txt':msg})
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)
+        })
+
+
+    </script>
+    
+
+    <script src="src/js/jquery-3.3.1.min.js"></script>
+    <script src="src/js/popper.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/jquery.validate.min.js"></script>
+  </body>
+</html>
