@@ -13,19 +13,20 @@ import functions as f
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+f.init()
 
-
+'''
 @app.before_first_request
 def on_startup():
     f.init()
+'''
 
 
-@app.route("/api/processRequest", methods=['GET'])
+@app.route("/api/processRequest", methods=['POST'])
 @cross_origin()
 def process_request():
-    args = request.get_json()
-    print("args recieved", args)
-    text = args['txt']
+    text = request.args.get('text')
+    print("text recieved", text)
     return f.predict(text), 200
 
 

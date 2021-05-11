@@ -8,9 +8,9 @@
 import requests
 
 
-response = requests.get('http://127.0.0.1:5000/api/processRequest', json={
-    "txt": "There are many movies we can watch"
-})
+response = requests.post(
+    'http://127.0.0.1:5000/api/processRequest?text="There are many movies we can watch"'
+)
 print(response.json())
 
 # Check if the image looks right using the below URL

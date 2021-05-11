@@ -5,6 +5,7 @@ cloudpickle==1.6.0
 cycler==0.10.0
 flake8==3.9.2
 Flask==1.1.2
+Flask-Cors==3.0.10
 gunicorn==20.1.0
 idna==2.10
 itsdangerous==1.1.0

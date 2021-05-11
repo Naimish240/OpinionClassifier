@@ -127,6 +127,8 @@ def get_shap_image(word_df):
         feature_dependence="independent"
     )
 
+    plt.figure(figsize=(2, 6))
+
     shap_values = explainer.shap_values(word_df)
     img = shap.force_plot(
         explainer.expected_value,
