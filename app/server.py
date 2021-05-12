@@ -6,7 +6,7 @@
 # https://stackoverflow.com/questions/25594893/how-to-enable-cors-in-flask
 # ------------------------------------------------------
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flask_cors import CORS, cross_origin
 from . import functions as f
 
@@ -26,7 +26,7 @@ def on_startup():
 @app.before_request
 def check():
     if request.method == 'OPTIONS':
-        return Flask.Response(status=200)
+        return Response(status=200)
 
 
 @app.route("/")
