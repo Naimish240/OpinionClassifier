@@ -125,7 +125,7 @@
       //alert("vidi")
       console.log(Params);
       // https://stackoverflow.com/questions/26416727/cross-origin-resource-sharing-on-github-pages#:~:text=There's%20no%20way%20to%20support,love%20to%20see%20this%20feature.
-      fetch(`https://cors.io/?https://opinion-classifier.herokuapp.com/api/processRequest?text=${msg}`, Params)
+      fetch(`https://opinion-classifier.herokuapp.com/api/processRequest?text=${msg}`, Params)
         .then(response => {
           return response.json();
         })
