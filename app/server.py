@@ -8,7 +8,8 @@
 
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
-import functions as f
+from . import functions as f
+
 
 app = Flask(__name__)
 cors = CORS(app)
