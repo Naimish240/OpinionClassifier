@@ -190,7 +190,7 @@ def predict(text):
 
 if __name__ == '__main__':
     text = "I think that it is going to rain today"
-    
+
     df = load_data()
     print("Data loaded")
     '''
