@@ -23,7 +23,7 @@ def on_startup():
 '''
 
 
-@app.before_request()
+@app.before_request
 def check():
     if request.method == 'OPTIONS':
         return Flask.Response(status=200)
