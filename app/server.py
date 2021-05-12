@@ -23,6 +23,11 @@ def on_startup():
 '''
 
 
+@app.route("/")
+def home():
+    return "Server is running"
+
+
 @app.route("/api/processRequest", methods=['POST'])
 @cross_origin()
 def process_request():
