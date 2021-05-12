@@ -6,7 +6,7 @@
 # https://stackoverflow.com/questions/25594893/how-to-enable-cors-in-flask
 # ------------------------------------------------------
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from . import functions as f
 
@@ -39,7 +39,7 @@ def home():
 def process_request():
     text = request.args.get('text')
     print("text recieved", text)
-    response = Flask.jsonify(f.predict(text))
+    response = jsonify(f.predict(text))
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response, 200
 
