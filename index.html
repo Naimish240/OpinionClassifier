@@ -115,11 +115,16 @@
       //alert("I came here")
       msg = document.getElementById('message').value;
       const Params = {
-        method: "POST"
+        method: "POST",
+        async: true,
+        crossorigin: true,
+        headers: {
+          "cache-control" : "no-cache"
+        }
       }
       //alert("vidi")
       console.log(Params);
-      fetch(`http://127.0.0.1:5000/api/processRequest?text=${msg}`, Params)
+      fetch(`https://opinion-classifier.herokuapp.com/api/processRequest/api/processRequest?text=${msg}`, Params)
         .then(response => {
           return response.json();
         })

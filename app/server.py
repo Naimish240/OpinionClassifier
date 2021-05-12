@@ -23,13 +23,18 @@ def on_startup():
 '''
 
 
+@app.before_request()
+def check():
+    if request.method == 'OPTIONS':
+        return Flask.Response(status=200)
+
+
 @app.route("/")
 def home():
     return "Server is running"
 
 
 @app.route("/api/processRequest", methods=['POST'])
-@cross_origin()
 def process_request():
     text = request.args.get('text')
     print("text recieved", text)
