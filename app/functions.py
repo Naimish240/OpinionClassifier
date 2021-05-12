@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import shap
 import io
 import base64
+import pickle
 
 
 BASE = 'https://raw.githubusercontent.com/fractalego/subjectivity_classifier/'
@@ -104,6 +105,17 @@ def eval_clf(clf, X, y):
     print("Accuracy: ", acc)
 
 
+def save_clf():
+    with open("model", 'wb') as fh:
+        pickle.dump(clf, fh)
+
+
+def load_clf():
+    with open("model", 'rb') as fh:
+        c = pickle.load(fh)
+    return c
+
+
 def get_prediction(text):
     global vectorizer, clf
     x = vectorizer.transform([text])
@@ -178,10 +190,16 @@ def predict(text):
 
 if __name__ == '__main__':
     text = "I think that it is going to rain today"
+    
     df = load_data()
     print("Data loaded")
+    '''
     clf = train_model(df)
     print("Classifier trained")
+    save_clf()
+    print("Classifier Saved")
+    '''
+    clf = load_clf()
     word_df, pred = get_prediction(text)
     if pred == 0:
         print("Statement is not an opinion")
