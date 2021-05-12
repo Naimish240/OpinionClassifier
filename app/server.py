@@ -35,10 +35,13 @@ def home():
 
 
 @app.route("/api/processRequest", methods=['POST'])
+@cross_origin()
 def process_request():
     text = request.args.get('text')
     print("text recieved", text)
-    return f.predict(text), 200
+    response = Flask.jsonify(f.predict(text))
+    # response.headers.add("Access-Control-Allow-Origin", "*")
+    return response, 200
 
 
 if __name__ == "__main__":

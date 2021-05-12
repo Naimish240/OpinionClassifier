@@ -119,12 +119,12 @@
         async: true,
         crossorigin: true,
         headers: {
-          "cache-control" : "no-cache"
+          "cache-control" : "no-cache",
         }
       }
       //alert("vidi")
       console.log(Params);
-      fetch(`https://opinion-classifier.herokuapp.com/api/processRequest/api/processRequest?text=${msg}`, Params)
+      fetch(`https://opinion-classifier.herokuapp.com/api/processRequest?text=${msg}`, Params)
         .then(response => {
           return response.json();
         })
