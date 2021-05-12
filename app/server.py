@@ -40,7 +40,7 @@ def process_request():
     text = request.args.get('text')
     print("text recieved", text)
     response = jsonify(f.predict(text))
-    response.headers.add("Access-Control-Allow-Origin", "*")
+    # response.headers.add("Access-Control-Allow-Origin", "*")
     return response, 200
 
 
